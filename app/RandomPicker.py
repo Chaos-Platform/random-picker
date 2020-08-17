@@ -34,7 +34,7 @@ class Picker:
         filtered_fault_list = []
         # Check if request succeeded
         if "200" in str(response):
-            all_faults = json.loads(response.content.decode("utf-8"))["result"]
+            all_faults = json.loads(response.content.decode("utf-8"))
             for fault in all_faults:
                 for server_group in server["groups"]:
                     if fault["active"]:
@@ -51,7 +51,7 @@ class Picker:
         single_server = None
         # Check if request succeeded
         if "200" in str(response):
-            server_list = json.loads(response.content.decode("utf-8"))["result"]
+            server_list = json.loads(response.content.decode("utf-8"))
             # Check if the servers have to be filtered by group
             if self.group_pick != new_group:
                 filter_groups = lambda server: server if new_group in server["groups"] else None
